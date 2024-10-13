@@ -20,12 +20,12 @@
         <module>api-gateway</module>
         <module>file-service</module>
         <module>notification-service</module>
+        <module>search-service</module>
 
         <module>book-service</module>
         <module>identity-service</module>
         <module>post-service</module>
         <module>profile-service</module>
-        <module>search-service</module>
     </modules>
 
     <properties>
@@ -38,6 +38,7 @@
 
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <org.elasticsearch.version>8.14.3</org.elasticsearch.version>
         <projectlombok-lombok.version>1.18.30</projectlombok-lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
     </properties>
@@ -50,6 +51,11 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${org.elasticsearch.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -132,6 +138,10 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
         </dependency>
     </dependencies>
 
@@ -283,5 +293,12 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
 
 </project>
